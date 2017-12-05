@@ -19,7 +19,7 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = '> 2.2'
-  spec.add_dependency "httparty", "~> 0.14.0" # TODO: Temporary lockdown. See issue #103 for more info.
+  spec.add_dependency "httparty", "~> 0.14" # TODO: Temporary lockdown. See issue #103 for more info.
   spec.add_dependency "dotenv", "~> 2.0"
   spec.add_dependency "dry-struct", "~> 0.1"
   spec.add_dependency "dry-types", "~> 0.8"
@@ -34,7 +34,7 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.add_development_dependency "vcr", "~> 3.0"
   spec.add_development_dependency "pry", "~> 0"
   spec.add_development_dependency "codeclimate-test-reporter", "~> 0"
-  spec.add_development_dependency "rubocop", "~> 0.46.0"
-  spec.add_development_dependency "rubocop-rspec", "~> 1.8.0"
+  spec.add_development_dependency "rubocop", "~> 0.51"
+  spec.add_development_dependency "rubocop-rspec", "~> 1.8"
 
 end
