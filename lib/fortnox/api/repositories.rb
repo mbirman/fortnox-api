@@ -3,6 +3,7 @@
 require 'fortnox/api/repositories/article'
 require 'fortnox/api/repositories/customer'
 require 'fortnox/api/repositories/invoice'
+require 'fortnox/api/repositories/invoice_payment'
 require 'fortnox/api/repositories/order'
 require 'fortnox/api/repositories/project'
 require 'fortnox/api/repositories/terms_of_payment'
