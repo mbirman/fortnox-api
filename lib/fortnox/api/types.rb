@@ -52,10 +52,11 @@ module Fortnox
 
       CountryCode = Nullable::String
 
-      Currency = Strict::String
-                 .constrained(included_in: Currencies.values)
-                 .optional
-                 .constructor(EnumConstructors.sized(3))
+      CurrencyCode = Strict::String
+                     .constrained(included_in: Currencies.values)
+                     .optional
+                     .constructor(EnumConstructors.sized(3))
+
       CustomerType = Strict::String
                      .constrained(included_in: CustomerTypes.values)
                      .optional

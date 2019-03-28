@@ -50,7 +50,7 @@ module Fortnox
         attribute :cost_center, Types::Nullable::String
 
         # Currency Code of the currency.
-        attribute :currency, Types::Currency
+        attribute :currency, Types::CurrencyCode
 
         # CurrencyRate Currency rate used for the document
         attribute :currency_rate, Types::Nullable::Float
