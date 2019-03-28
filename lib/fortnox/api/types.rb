@@ -94,6 +94,7 @@ module Fortnox
       require 'fortnox/api/types/edi_information'
       require 'fortnox/api/types/invoice_row'
       require 'fortnox/api/types/order_row'
+      require 'fortnox/api/types/voucher_row'
     end
   end
 end
