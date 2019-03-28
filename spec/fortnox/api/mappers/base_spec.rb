@@ -123,9 +123,9 @@ describe Fortnox::API::Mapper::Base do
     end
   end
 
-  describe 'Currency' do
+  describe 'CurrencyCode' do
     include_examples 'identity mapper', :currency do
-      let(:value) { Fortnox::API::Types::Currency['SEK'] }
+      let(:value) { Fortnox::API::Types::CurrencyCode['SEK'] }
     end
   end
 

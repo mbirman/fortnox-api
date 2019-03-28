@@ -29,7 +29,7 @@ module Fortnox
 
       Registry.register(:account_number, Fortnox::API::Mapper::Identity)
       Registry.register(:country_code, Fortnox::API::Mapper::Identity)
-      Registry.register(:currency, Fortnox::API::Mapper::Identity)
+      Registry.register(:currency_code, Fortnox::API::Mapper::Identity)
       Registry.register(:customer_type, Fortnox::API::Mapper::Identity)
       Registry.register(:discount_type, Fortnox::API::Mapper::Identity)
       Registry.register(:email, Fortnox::API::Mapper::Identity)
@@ -41,6 +41,7 @@ module Fortnox
 end
 
 require 'fortnox/api/mappers/customer'
+require 'fortnox/api/mappers/currency'
 require 'fortnox/api/mappers/default_delivery_types'
 require 'fortnox/api/mappers/default_templates'
 require 'fortnox/api/mappers/edi_information'

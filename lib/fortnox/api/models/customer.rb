@@ -46,7 +46,7 @@ module Fortnox
         attribute :comments, Types::Sized::String[1024]
 
         # Currency	Currency of the customer, 3 letters
-        attribute :currency, Types::Currency
+        attribute :currency, Types::CurrencyCode
 
         # CostCenter	Cost center of the customer, Cost center in Fortnox
         attribute :cost_center, Types::Nullable::String
