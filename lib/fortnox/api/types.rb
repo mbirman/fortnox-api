@@ -44,10 +44,14 @@ module Fortnox
                     .optional
                     .constructor(EnumConstructors.default)
 
-      CountryCode = Strict::String
-                    .constrained(included_in: CountryCodes.values)
-                    .optional
-                    .constructor(EnumConstructors.sized(2))
+      # NOTE: See https://github.com/accodeing/fortnox-api/issues/153
+      # CountryCode = Strict::String
+      #               .constrained(included_in: CountryCodes.values)
+      #               .optional
+      #               .constructor(EnumConstructors.sized(2))
+
+      CountryCode = Nullable::String
+
       Currency = Strict::String
                  .constrained(included_in: Currencies.values)
                  .optional
