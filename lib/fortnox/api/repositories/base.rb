@@ -2,6 +2,7 @@
 
 require 'httparty'
 require 'fortnox/api/request_handling'
+require 'fortnox/api/repositories/base/actions'
 require 'fortnox/api/repositories/base/loaders'
 require 'fortnox/api/repositories/base/savers'
 
@@ -11,6 +12,7 @@ module Fortnox
       class Base
         include HTTParty
         include Fortnox::API::RequestHandling
+        include Actions
         include Loaders
         include Savers
 
