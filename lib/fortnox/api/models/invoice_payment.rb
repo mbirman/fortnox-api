@@ -83,7 +83,7 @@ module Fortnox
         attribute :source, Types::Nullable::String.is(:read_only)
 
         # WriteOffs
-        attribute :write_offs, Types::Strict::Array.member(Types::WriteOff)
+        attribute :write_offs, Types::Strict::Array.of(Types::WriteOff)
       end
     end
   end
