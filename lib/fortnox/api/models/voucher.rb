@@ -20,7 +20,7 @@ module Fortnox
         attribute :year,            Types::Nullable::Integer.is(:read_only)
         attribute :voucher_number,  Types::Nullable::Integer.is(:read_only)
 
-        attribute :voucher_rows,  Types::Strict::Array.member(Types::VoucherRow)
+        attribute :voucher_rows,  Types::Strict::Array.of(Types::VoucherRow)
       end
     end
   end
