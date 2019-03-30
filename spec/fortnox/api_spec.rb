@@ -98,26 +98,36 @@ describe Fortnox::API do
 
   describe 'access_tokens' do
     context 'when set to a String' do
-      subject { -> { described_class.configure { |config| config.access_tokens = '12345' } } }
+      it 'raises an exception' do
+        access_tokens = SecureRandom.hex
 
-      it { is_expected.to raise_error(ArgumentError, /expected a Hash or an Array/) }
+        expect do
+          described_class.configure { |config| config.access_tokens = access_tokens }
+        end.to raise_error(ArgumentError, /expected a Hash or an Array/)
+      end
     end
 
     shared_examples_for 'valid argument' do
-      subject { described_class.configure { |config| config.access_tokens = value } }
-
       it { is_expected.to eql(value) }
     end
 
     context 'when set to a Hash' do
-      include_examples 'valid argument' do
-        let(:value) { { a: '123', b: '456' } }
+      it "changes the access_tokens to Hash" do
+        access_tokens = { a: '123', b: '456' }
+
+        expect do
+          described_class.configure { |config| config.access_tokens = access_tokens }
+        end.to change { described_class.config.access_tokens }.to(access_tokens)
       end
     end
 
     context 'when set to an Array' do
-      include_examples 'valid argument' do
-        let(:value) { %w[123 456] }
+      it "changes the access_tokens to Array" do
+        access_tokens = %w[123 456]
+
+        expect do
+          described_class.configure { |config| config.access_tokens = access_tokens }
+        end.to change { described_class.config.access_tokens }.to(access_tokens)
       end
     end
   end

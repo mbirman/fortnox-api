@@ -9,19 +9,21 @@ describe Fortnox::API::Repository::Base do
       class Test
       end
     end
+
     module Repository
       class Test < Fortnox::API::Repository::Base
         MODEL = Model::Test
       end
     end
 
-    require 'dry/container/stub'
-    Fortnox::API::Registry.enable_stubs!
-    Fortnox::API::Registry.stub(:test, Model::Test)
+    unless Fortnox::API::Registry.key?(:test)
+      Fortnox::API::Registry.register(:test, Model::Test)
+    end
   end
 
-  let(:access_token) { '3f08d038-f380-4893-94a0-a08f6e60e67a' }
-  let(:access_token2) { '89feajou-sif8-8f8u-29ja-xdfniokeniod' }
+
+  let(:access_token) { SecureRandom.uuid }
+  let(:access_token2) { SecureRandom.uuid }
   let(:client_secret) { 'P5K5vE3Kun' }
   let(:repository) { Repository::Test.new }
   let(:application_json) {}
