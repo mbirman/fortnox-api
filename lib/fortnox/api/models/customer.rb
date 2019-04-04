@@ -27,6 +27,8 @@ module Fortnox
         #   :hire
         # )
 
+        attribute :active, Types::Nullable::Boolean
+
         # Url Direct URL to the record
         attribute :url, Types::Nullable::String.is(:read_only)
 
