@@ -79,7 +79,7 @@ module Fortnox
         'XTS', 'XXX', 'YER', 'ZAR', 'ZMK', 'ZWD'
       )
       CustomerTypes = Types::Strict::String.enum(
-        'PRIVATE', 'COMPANY'
+        'PRIVATE', 'COMPANY', 'UNDEFINED'
       )
       VATTypes = Types::Strict::String.enum(
         'SEVAT', 'SEREVERSEDVAT', 'EUREVERSEDVAT', 'EUVAT', 'EXPORT'
