@@ -36,7 +36,7 @@ module Fortnox
           message = "#{exception}".sub(/\[.+?\]/, '').strip
           resource = name.split("::").last
 
-          [resource, id, message].join(" ")
+          [resource, "#{id}: ", message].join(" ").squeeze("  ").strip
         end
 
         def self.stub
