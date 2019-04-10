@@ -26,10 +26,17 @@ module Fortnox
               super(hash)
             end
           rescue Dry::Struct::Error => e
-            raise Fortnox::API::AttributeError, e
+            raise Fortnox::API::AttributeError, error_message(e, hash[self::UNIQUE_ID])
           end
 
           IceNine.deep_freeze(obj)
+        end
+
+        def self.error_message(exception, id)
+          message = "#{exception}".sub(/\[.+?\]/, '').strip
+          resource = name.split("::").last
+
+          [resource, "#{id}: ", message].join(" ").squeeze("  ").strip
         end
 
         def self.stub
