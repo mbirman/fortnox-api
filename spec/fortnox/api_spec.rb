@@ -108,6 +108,10 @@ describe Fortnox::API do
     end
 
     shared_examples_for 'valid argument' do
+      subject { described_class.config.access_tokens }
+
+      before { described_class.configure { |config| config.access_tokens = value } }
+
       it { is_expected.to eql(value) }
     end
 
