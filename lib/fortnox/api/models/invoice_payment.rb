@@ -10,9 +10,6 @@ module Fortnox
         UNIQUE_ID = :invoice_number
         STUB = { invoice_number: '' }.freeze
 
-        # Direct URL to the record
-        attribute :url, Types::Nullable::String.is(:read_only)
-
         # Amount Amount of the payment
         attribute :amount, Types::Nullable::Float
 
@@ -21,24 +18,6 @@ module Fortnox
 
         # Booked If the payment is booked or not
         attribute :booked, Types::Nullable::Boolean.is(:read_only)
-
-        # Currency Currency of the payment
-        attribute :currency, Types::Nullable::String.is(:read_only)
-
-        # Currency Currency of the payment
-        attribute :currency, Types::Nullable::String.is(:read_only)
-
-        # CurrencyRate The currency rate
-        attribute :currency_rate, Types::Nullable::Float
-
-        # CurrencyUnit The currency unit
-        attribute :currency_unit, Types::Nullable::Float.is(:read_only)
-
-        # ExternalInvoiceReference1 External invoice reference
-        attribute :external_invoice_reference1, Types::Nullable::String.is(:read_only)
-
-        # ExternalInvoiceReference2 External invoice reference
-        attribute :external_invoice_reference2, Types::Nullable::String.is(:read_only)
 
         # InvoiceCustomerName Customer name of the invoice
         attribute :invoice_customer_name, Types::Nullable::String.is(:read_only)
