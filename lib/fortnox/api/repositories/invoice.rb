@@ -17,7 +17,6 @@ module Fortnox
         end
 
         def email(entity)
-          perform_action(:put, :bookkeep, entity)
           get(get_action_url_for(entity, :email))
         end
 
