@@ -11,6 +11,10 @@ module Fortnox
         MODEL = Model::InvoicePayment
         MAPPER = Mapper::InvoicePayment
         URI = '/invoicepayments/'
+
+        def bookkeep(entity)
+          put(get_action_url_for(entity, :bookkeep))
+        end
       end
     end
   end
