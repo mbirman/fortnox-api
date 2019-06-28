@@ -7,7 +7,7 @@ module Fortnox
   module API
     module Model
       class InvoicePayment < Document
-        UNIQUE_ID = :invoice_number
+        UNIQUE_ID = :number
         STUB = { invoice_number: '' }.freeze
 
         # Amount Amount of the payment
