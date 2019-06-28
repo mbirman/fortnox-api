@@ -8,6 +8,9 @@ module Fortnox
       class EmailInformation < Types::Model
         STUB = {}.freeze
 
+        # EmailAddressFrom Reply to address. Must be a valid e-mail address. 1024 characters
+        attribute :email_address_from, Types::Email
+
         # EmailAddressTo Customer e-mail address. Must be a valid e-mail address. 1024 characters
         attribute :email_address_to, Types::Email
 
