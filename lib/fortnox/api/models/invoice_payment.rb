@@ -14,7 +14,7 @@ module Fortnox
         attribute :amount, Types::Nullable::Float
 
         # AmountCurrency Amount in the specified currency of the payment. Required if Currency is other than SEK
-        attribute :amount_currecy, Types::Nullable::Float
+        attribute :amount_currency, Types::Nullable::Float
 
         # Booked If the payment is booked or not
         attribute :booked, Types::Nullable::Boolean.is(:read_only)
