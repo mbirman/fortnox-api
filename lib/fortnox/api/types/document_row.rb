@@ -57,7 +57,7 @@ module Fortnox
         attribute :unit, Types::Nullable::String
 
         # VAT VAT percentage of the row.
-        attribute :vat, Types::Nullable::Integer
+        attribute :vat, Types::Nullable::Float
       end
     end
   end
