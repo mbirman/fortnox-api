@@ -17,10 +17,8 @@ module Fortnox
         end
 
         def search(hash)
-          attribute, value = hash.first
-          uri_encoded_value = CGI.escape(value)
-          uri = "#{self.class::URI}?#{attribute}=#{uri_encoded_value}"
-          response_hash = get(uri)
+          query = hash.inject("") { |memo, (k, v)| memo += "#{k}=#{CGI.escape(v.to_s)}&" }
+          response_hash = get("#{self.class::URI}?#{query}")
           instantiate_collection_response(response_hash)
         end
 
