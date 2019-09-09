@@ -16,14 +16,8 @@ module Fortnox
           instantiate_collection_response(response_hash)
         end
 
-        def search(hash)
-          query = hash.inject("") { |memo, (k, v)| memo += "#{k}=#{CGI.escape(v.to_s)}&" }
-          response_hash = get("#{self.class::URI}?#{query}")
-          instantiate_collection_response(response_hash)
-        end
-
         def find(id_or_hash)
-          return find_all_by(id_or_hash) if id_or_hash.is_a? Hash
+          return search(id_or_hash) if id_or_hash.is_a? Hash
 
           find_one_by(id_or_hash)
         end
@@ -33,7 +27,7 @@ module Fortnox
           instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
 
-        def find_all_by(hash)
+        def search(hash)
           response_hash = get("#{self.class::URI}?#{to_query(hash)}")
           instantiate_collection_response(response_hash)
         end
