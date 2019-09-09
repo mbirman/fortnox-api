@@ -14,10 +14,16 @@ module Fortnox
         end
 
         def validate_response(response)
-          return if response.code == 200
-
-          api_error = response.parsed_response['ErrorInformation']
-          raise_api_error(api_error, response) if api_error
+          case response.code
+          when 200
+          when 423
+            # HACK: FN doesn't actually provide JSON response in that case
+            #   they just render HTML error page.
+            raise_api_error({"message" => "Too Many Requests"}, response)
+          else
+            api_error = response.parsed_response['ErrorInformation']
+            raise_api_error(api_error, response) if api_error
+          end
         end
 
         def validate_and_parse(response)
