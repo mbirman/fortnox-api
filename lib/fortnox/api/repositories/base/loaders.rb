@@ -42,9 +42,24 @@ module Fortnox
           "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}"
         end
 
+        def pagination
+          @pagination ||= {}
+        end
+
         private
 
+        def set_pagination(response_hash)
+          meta = response_hash["MetaInformation"]
+
+          return if meta.nil?
+
+          pagination[:total_pages]      = meta["@TotalPages"]
+          pagination[:current_page]     = meta["@CurrentPage"]
+          pagination[:total_resources]  = meta["@TotalResources"]
+        end
+
         def instantiate_collection_response(response_hash)
+          set_pagination(response_hash)
           entities_hash = @mapper.wrapped_json_collection_to_entities_hash(response_hash)
           entities_hash.map do |entity_hash|
             instantiate(entity_hash)
