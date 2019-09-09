@@ -200,5 +200,17 @@ updated_customer.name #=> "Ned Stark"
 
 The update method takes an implicit hash of attributes to update, so you can update as many as you like in one go.
 
+
+## Pagination
+
+Each request updates `pagination` object (hash with keys `current_page`, `total_pages`, `total_resources`) inside the repository. Use the pagination data to fetch next page:
+
+```ruby
+repo = Fortnox::API::Repository::Invoice.new
+invoices = repo.search(limit: 500) # => gets first 500 invoices, which is maximum
+next_page = repo.pagination[:current_page] + 1
+repo.search(limit: 500, page: next_page) # => gets second batch
+```
+
 # Contributing
 See the [CONTRIBUTE](CONTRIBUTE.md) readme.
