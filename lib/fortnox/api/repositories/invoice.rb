@@ -13,29 +13,35 @@ module Fortnox
         URI = '/invoices/'
 
         def bookkeep(entity)
-          put(get_action_url_for(entity, :bookkeep))
+          response_hash = put(get_action_url_for(entity, :bookkeep))
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
 
         def email(entity)
-          get(get_action_url_for(entity, :email))
+          response_hash = get(get_action_url_for(entity, :email))
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
 
         def print(entity)
-          get(get_action_url_for(entity, :print))
+          response_hash = get(get_action_url_for(entity, :print))
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
 
         def externalprint(entity)
-          put(get_action_url_for(entity, :externalprint))
+          response_hash = put(get_action_url_for(entity, :externalprint))
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
 
         def nox_finance(entity, delivery_method)
-          post("/noxfinansinvoices/", body: {
+          response_hash = post("/noxfinansinvoices/", body: {
             "NoxFinansInvoice" => {
               "InvoiceNumber" => "#{entity.document_number}",
               "SendMethod" => delivery_method.upcase,
               "Service" => "LEDGERBASE"
             }
           }.to_json)
+
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
       end
     end

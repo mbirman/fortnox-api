@@ -16,6 +16,8 @@ module Fortnox
         include Loaders
         include Savers
 
+        debug_output $stdout
+
         HTTParty::Parser::SupportedFormats['text/html'] = :json
 
         headers(

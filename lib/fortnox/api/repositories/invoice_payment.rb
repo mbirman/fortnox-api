@@ -13,7 +13,8 @@ module Fortnox
         URI = '/invoicepayments/'
 
         def bookkeep(entity)
-          put(get_action_url_for(entity, :bookkeep))
+          response_hash = put(get_action_url_for(entity, :bookkeep))
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
       end
     end
