@@ -5,7 +5,7 @@ require 'fortnox/api/types/document_row'
 module Fortnox
   module API
     module Types
-     class VoucherRow < DocumentRow
+     class VoucherRow < Fortnox::API::Types::Model
         STUB = {}.freeze
 
         attribute :debit,                   Types::Nullable::Float
@@ -13,6 +13,8 @@ module Fortnox
 
         attribute :account,                 Types::AccountNumber
 
+        attribute :cost_center,             Types::Nullable::String
+        attribute :project,                 Types::Nullable::String
         attribute :description,             Types::Nullable::String
 
         attribute :transaction_information, Types::Sized::String[100]
