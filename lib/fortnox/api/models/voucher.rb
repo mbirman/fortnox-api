@@ -12,6 +12,7 @@ module Fortnox
 
         attribute :transaction_date,  Types::Nullable::Date
 
+        attribute :comments,          Types::Nullable::String
         attribute :description,       Types::Nullable::String
         attribute :reference_number,  Types::Nullable::String.is(:read_only)
         attribute :reference_type,    Types::Nullable::String.is(:read_only)
