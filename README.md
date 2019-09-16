@@ -1,6 +1,16 @@
 # Fortnox API
  > Wrapper gem for Fortnox AB's version 3 REST(ish) API. If you need to integrate an existing or new Ruby or Rails app against Fortnox this gem will save you a lot of time, you are welcome. Feel free to repay the community with some nice PRs of your own :simple_smile:
 
+## Why fork?
+This version supports some features I needed for my projects. Key differences:
+- `InvoicePayment` ([PR](https://github.com/mbirman/fortnox-api/pull/1)) and `Voucher` ([PR](https://github.com/mbirman/fortnox-api/pull/2)) resources added
+- `Currency` resource added, previously defined `Currency` type is renamed to `CurrencyCode` ([PR](https://github.com/mbirman/fortnox-api/pull/4))
+- Invoice actions are supported ([PR](https://github.com/mbirman/fortnox-api/pull/5))
+- Multi-parameter search is allowed ([PR](https://github.com/mbirman/fortnox-api/pull/11))
+- Pagination works ([PR](https://github.com/mbirman/fortnox-api/pull/13))
+
+There are more changes, see pull-requests for additional info.
+
 # Status for master
 [![Gem version](https://img.shields.io/gem/v/fortnox-api.svg?style=flat-square)](https://rubygems.org/gems/fortnox-api)
 [![Build Status](https://travis-ci.com/accodeing/fortnox-api.svg?branch=master)](https://travis-ci.com/accodeing/fortnox-api)
