@@ -2,6 +2,8 @@
 
 require 'dry-struct'
 require 'dry-types'
+require 'countries'
+require 'fortnox/api/types/shim/country_string'
 
 module Dry
   module Types
@@ -24,6 +26,7 @@ module Fortnox
   module API
     module Types
       include Dry::Types.module
+      ISO3166.configure { |config| config.locales = %i[en sv] }
 
       THE_TRUTH = { true => true, 'true' => true, false => false, 'false' => false }.freeze
 
@@ -38,22 +41,47 @@ module Fortnox
       AccountNumber = Strict::Int
                       .constrained(gteq: 0, lteq: 9999)
                       .optional
+                      .constructor do |value|
+                        next nil if value.nil? || value == ''
+                        value
+                      end
 
       ArticleType = Strict::String
                     .constrained(included_in: ArticleTypes.values)
                     .optional
                     .constructor(EnumConstructors.default)
 
-      # NOTE: See https://github.com/accodeing/fortnox-api/issues/153
-      # CountryCode = Strict::String
-      #               .constrained(included_in: CountryCodes.values)
-      #               .optional
-      #               .constructor(EnumConstructors.sized(2))
+      Country = Strict::String
+                .optional
+                .constructor do |value|
+                  next value if value.nil? || value == ''
 
-      CountryCode = Nullable::String
+                  # Fortnox only supports Swedish translation of Sweden
+                  next CountryString.new('SE') if value =~ /^s(e$|we|ve)/i
+
+                  country = ::ISO3166::Country[value] ||
+                            ::ISO3166::Country.find_country_by_name(value) ||
+                            ::ISO3166::Country.find_country_by_translated_names(value)
+
+                  raise Dry::Types::ConstraintError.new('value violates constraints', value) if country.nil?
+
+                  CountryString.new(country.alpha2)
+                end
+
+      CountryCode = Strict::String
+                    .optional
+                    .constructor do |value|
+                      next value if value.nil? || value == ''
+
+                      country = ::ISO3166::Country[value]
+
+                      raise Dry::Types::ConstraintError.new('value violates constraints', value) if country.nil?
+
+                      country.alpha2
+                    end
 
       CurrencyCode = Strict::String
-                     .constrained(included_in: Currencies.values)
+                     .constrained(included_in: CurrencyCodes.values)
                      .optional
                      .constructor(EnumConstructors.sized(3))
 
