@@ -43,6 +43,11 @@ module Fortnox
 
           instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
+
+        def credit(entity)
+          response_hash = put(get_action_url_for(entity, :credit))
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
+        end
       end
     end
   end
