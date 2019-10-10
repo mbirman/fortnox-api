@@ -135,7 +135,7 @@ Fortnox uses quite low [API rate limits](https://developer.fortnox.se/blog/impor
 ```ruby
 Fortnox::API.configure do |config|
   config.client_secret = 'P5K5wE3Kun'
-  config.access_tokens ['a78d35hc-j5b1-ga1b-a1h6-h72n74fj5327', 's2b45f67-dh5d-3g5s-2dj5-dku6gn26sh62']
+  config.access_tokens = ['a78d35hc-j5b1-ga1b-a1h6-h72n74fj5327', 's2b45f67-dh5d-3g5s-2dj5-dku6gn26sh62']
 end
 ```
 The gem will then automatically rotate between these tokens. In theory you can declare as many as you like. Remember that you will need to use one authorization code to get each token! See Fortnox developer documentation for more information about how to get access tokens.
