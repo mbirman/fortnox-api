@@ -32,6 +32,11 @@ module Fortnox
           instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
 
+        def einvoice(entity)
+          response_hash = get(get_action_url_for(entity, :einvoice))
+          instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
+        end
+
         def nox_finance(entity, delivery_method)
           response_hash = post("/noxfinansinvoices/", body: {
             "NoxFinansInvoice" => {
