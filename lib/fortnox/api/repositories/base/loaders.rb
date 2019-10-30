@@ -34,7 +34,7 @@ module Fortnox
 
         def to_query(hash)
           hash.collect do |key, value|
-            escape(key, value)
+            escape("#{key}".gsub("_", ""), value)
           end.sort * '&'
         end
 
