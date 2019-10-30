@@ -8,6 +8,7 @@ This version supports some features I needed for my projects. Key differences:
 - Invoice actions are supported ([PR](https://github.com/mbirman/fortnox-api/pull/5))
 - Multi-parameter search is allowed ([PR](https://github.com/mbirman/fortnox-api/pull/11))
 - Pagination works ([PR](https://github.com/mbirman/fortnox-api/pull/13))
+- Possible to provide human-readable search parameters (`article_number` vs `articlenumber`)([PR](https://github.com/mbirman/fortnox-api/pull/19))
 
 There are more changes, see pull-requests for additional info.
 
