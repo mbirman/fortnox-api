@@ -23,7 +23,7 @@ module Fortnox
         end
 
         def find_one_by(id)
-          response_hash = get("#{self.class::URI}#{id}")
+          response_hash = get("#{self.class::URI}#{CGI.escape(id.to_s)}")
           instantiate(@mapper.wrapped_json_hash_to_entity_hash(response_hash))
         end
 
