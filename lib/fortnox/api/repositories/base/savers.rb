@@ -39,7 +39,8 @@ module Fortnox
         end
 
         def get_update_url_for(entity)
-          "#{self.class::URI}#{entity.unique_id}"
+          entity_id = CGI.escape("#{entity.unique_id}")
+          "#{self.class::URI}#{entity_id}"
         end
 
         def instantiate_saved(wrapped_json_hash)
